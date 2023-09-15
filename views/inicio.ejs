@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Foro-Ap</title>
+</head>
+<body>
+    <h1 class="text-center text-warning bg-dark rounded-pill mt-4 container p-4 rounded">Foro para artículos creados por usuarios</h1>
+    
+    <div class="d-flex justify-content-center m-5 ">
+        <a href="/agregar" class="btn btn-success">Agregar nuevo artículo</a>
+    </div>
+
+    <div class="container m-auto ">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> <!-- Utiliza la clase "row-cols" para definir el número de columnas -->
+            <% articulos.forEach((item) => { %>
+                <div class="col"> <!-- Cada tarjeta se coloca en una columna -->
+                    <div class="card">
+                        <img src="<%= item.img_art %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><%= item.nom_art %></h5>
+                            <p class="card-text text-center"><%= item.desc_art %></p>
+                            <div class="d-flex justify-content-around">
+                                <a type="button" class="btn btn-primary" href="/editar/<%= item.cod_art %>">Editar</a>
+                                <a type="button" class="btn btn-danger" href="/eliminar/<%= item.cod_art %>">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%  } )%>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
